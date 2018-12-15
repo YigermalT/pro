@@ -6,14 +6,16 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
     selector: 'app-user-details',
     template: `
-    <h3>User Details</h3>
-    {{details}}
+      <h3>User Details</h3>
+      {{ // @ts-ignore
+      userData| json}}
     `,
     styles: []
 })
+
 export class UserDetailComponent implements OnInit {
     private id;
-    private details: any;
+    private userData: any;
     private subscription: Subscription;
 
     constructor(private route: ActivatedRoute, private dataService: DataService) {
@@ -23,7 +25,7 @@ export class UserDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.details = JSON.stringify(this.dataService.getUser(this.id));
+        this.userData = JSON.stringify(this.dataService.getUser(this.id));
     }
     ngOnDestroy() {
         this.subscription.unsubscribe();

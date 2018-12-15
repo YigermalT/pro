@@ -6,13 +6,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
+import {DataService} from './data.service';
 
-const MY_ROUTES: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'users', loadChildren: './users/users.module#UsersModule'},
-  {path: '404', component: P404Component},
-  {path: '**', redirectTo: '404'}
-];
+
 
 @NgModule({
   declarations: [
@@ -22,10 +18,10 @@ const MY_ROUTES: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(MY_ROUTES)
+    // RouterModule.forRoot(MY_ROUTES)
     //AppRoutingModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

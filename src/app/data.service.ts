@@ -12,15 +12,16 @@ export class DataService {
     }
 
     getUser(userId: string){
-        for(let u of this.data){
+        for (let u of this.data){
           if(u.id.value === userId) {
             return u;
           }
         }
         return {};
+
       }
 
-      isValidId(userId: string): boolean{
+  validateUser(userId: string): boolean{
         for(let u of this.data){
           if(u.id.value == userId) {
             return true;
